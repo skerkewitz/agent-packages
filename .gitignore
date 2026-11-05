@@ -1,0 +1,57 @@
+# ---------------------------------------------------------------------------
+# agent-packages — .gitignore
+#
+# Only SOURCE primitives are committed (packages/<name>/apm.yml, README.md and
+# packages/<name>/.apm/**). Everything APM generates when you install or
+# compile a package for testing must never be committed.
+# ---------------------------------------------------------------------------
+
+# --- APM dependency resolution ---------------------------------------------
+apm_modules/
+apm.lock.yaml
+# Local-path install state
+.apm-local/
+# Bundles produced by `apm pack`
+*.apm.tar.gz
+build/
+dist/
+
+# --- Generated agent/client output (any depth) -----------------------------
+# Claude Code
+**/.claude/
+# Shared skills dir used by APM >= 0.35 (`.agents/skills/`)
+**/.agents/
+# Other clients APM can target
+**/.cursor/
+**/.codex/
+**/.gemini/
+**/.windsurf/
+**/.kiro/
+**/.opencode/
+
+# Copilot output and compiled context files inside packages.
+# A root-level .github/ (CI workflows) is intentionally NOT ignored.
+packages/**/.github/
+packages/**/AGENTS.md
+packages/**/CLAUDE.md
+packages/**/GEMINI.md
+
+# --- Local test sandboxes ---------------------------------------------------
+# Throwaway dirs for `apm install` smoke tests
+/sandbox/
+/tmp/
+
+# --- Editors / OS -----------------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# --- Script runtimes (skills may ship helper scripts) ------------------------
+__pycache__/
+*.py[cod]
+.venv/
+node_modules/
+*.log

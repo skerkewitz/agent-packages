@@ -1,0 +1,8 @@
+name: sker-power
+version: 1.0.0
+description: Workflow skills for thinking through and carrying out changes - brainstorm, explain-and-solve a decision, implement a brainstorm decision
+author: Stefan Kerkewitz
+license: MIT
+targets:
+  - claude
+  - copilot
