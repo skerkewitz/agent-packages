@@ -1,0 +1,8 @@
+name: sker-project
+version: 1.0.0
+description: How a project is run - decision records with time-and-title IDs (sker-adr); installed per project, not globally
+author: Stefan Kerkewitz
+license: MIT
+targets:
+  - claude
+  - copilot
