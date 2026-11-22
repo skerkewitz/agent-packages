@@ -11,7 +11,7 @@ The repo root is **not** a package (no `apm.yml` here).
 | Package | Description |
 |---|---|
 | [`sker-power`](packages/sker-power) | Workflow skills: brainstorm a change, hand decisions back with costed options, implement a brainstorm decision |
-| [`sker-project`](packages/sker-project) | How a project is run, installed per project: decision records with IDs from the time and the title that do not collide across branches |
+| [`sker-project`](packages/sker-project) | How a project is run, installed per project: decision records with IDs that do not collide across branches, every change through a pull request |
 
 ## Install
 
