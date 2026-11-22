@@ -1,6 +1,6 @@
 ---
 name: sker-adr
-description: Architecture decision records whose IDs are made from the time and a hash of the title (ADR-<8 characters of Crockford Base32>), so records written on parallel branches never collide and sort by time. A table in docs/ADR.md keeps every record's status, docs/adr/<ID>-<slug>.md holds one record each, new_adr.py makes the ID, file and row, check_adr.py checks table, files and every citation. Use it when a project has such a docs/ADR.md, when the user has taken a decision worth recording, when a record has to be written, superseded, amended or cited, when the user asks to set up decision records in a project or to move numbered ADRs to these IDs, or invokes /sker-adr.
+description: Architecture decision records whose IDs are made from the time and a hash of the title (ADR-<8 characters of Crockford Base32>), so records written on parallel branches never collide and sort by time. A table in docs/ADR.md keeps every record's status, docs/adr/<ID>-<slug>.md holds one record each, new_adr.py makes the ID, file and row, check_adr.py checks table, files and every citation. Use it when a project has such a docs/ADR.md, when the user has taken a decision worth recording, when a record has to be written, superseded, amended or cited (also when a reply, pull request or document mentions one: the first mention says what the record decides, not only its ID), when the user asks to set up decision records in a project or to move numbered ADRs to these IDs, or invokes /sker-adr.
 ---
 
 # Decision records with time-and-title IDs
@@ -81,10 +81,27 @@ Clauses add up: `Accepted; amends ADR-<A>; amended by ADR-<C>`.
 
 ## Citing
 
-Cite a record as `ADR-<ID>` everywhere: docs, code comments, commit messages, pull requests. In
-Markdown docs, link to the file where a reader would want to follow it. A record of another
-project gets the project's name in front, as in "superdevkit's ADR-6FCBBNSH"; the check skips
-those. IDs of one day share their first 4 or 5 characters, so copy an ID rather than typing it.
+The ID is the handle that stays: it is what `check_adr.py` checks and what grep finds. A reader
+who does not have the table open learns nothing from it, though, so how a record is cited
+depends on who reads the text.
+
+In text for people (replies in the chat, pull request descriptions and comments, release notes,
+docs) the first mention of a record says what the decision is, followed by the ID in brackets:
+
+- a short title, quoted as it is: as "Records get an ID made from the time and the title"
+  (ADR-<ID>) predicts, the second merge conflicts in the table;
+- a long title, in a few words of your own and without quotes: the move of the workflow into
+  the shared package (ADR-<ID>) changed where the steps live.
+
+Later mentions in the same text use the ID alone. In Markdown, make the ID the link to the
+record's file, `([ADR-<ID>](docs/adr/<file>))`, with the path relative to the document.
+
+In dense places the ID stands alone: code comments, commit subjects, tables, lists of rules
+such as CLAUDE.md, the status column. There it has to be short and easy to grep.
+
+A record of another project gets the project's name in front, as in "superdevkit's
+ADR-6FCBBNSH"; the check skips those. IDs of one day share their first 4 or 5 characters, so
+copy an ID rather than typing it.
 
 ## Checking
 
@@ -122,9 +139,12 @@ Do this only when the user asks for it.
    > **Context.**, **Decision.**, **Alternatives.** where there were any, **Consequences.**).
    > `python3 dev/new_adr.py "Title"` makes the ID, the file and the row. A decision made or
    > changed is a new record; never edit an existing one, change the status of the records it
-   > supersedes or amends in the table instead. Cite records by ID (`ADR-<ID>`). An open
-   > question becomes a record only when it is decided. `python3 dev/check_adr.py` checks
-   > table, files and citations.
+   > supersedes or amends in the table instead. An open question becomes a record only when
+   > it is decided. `python3 dev/check_adr.py` checks table, files and citations. In text for
+   > people (chat, pull requests, docs) the first mention of a record says what it decides,
+   > then the ID in brackets: as "Short title" (ADR-<ID>) says, or a few words of your own for
+   > a long title. Code comments, commit subjects, tables and rule lists use the ID alone
+   > (`ADR-<ID>`).
 
 7. Commit all of it as one change.
 

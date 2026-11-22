@@ -178,7 +178,8 @@ What the change does, in a few sentences. The reason for it, if the title does n
 ## How
 
 How it is done, as much as a reviewer needs to read the diff: the approach, the files that
-matter, anything surprising. Decisions with a record are cited by its ID.
+matter, anything surprising. A decision with a record is cited as `sker-adr` says: the first
+mention says what it decides, then its ID in brackets.
 
 ## Verified
 

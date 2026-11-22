@@ -12,5 +12,5 @@ for how the agent works with you in any project are in [`sker-power`](../sker-po
 ## Install
 
 ```bash
-apm install skerkewitz/agent-packages/packages/sker-project#sker-project/v1.1.0   # into a project
+apm install skerkewitz/agent-packages/packages/sker-project#sker-project/v1.2.0   # into a project
 ```
