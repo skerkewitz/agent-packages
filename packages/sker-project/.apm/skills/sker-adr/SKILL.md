@@ -138,10 +138,10 @@ With the user's go-ahead only, since every citation changes:
 
 1. Give each record an ID for the day it was decided at 12:00 UTC plus its former number in
    seconds, so records of one day keep their order: `python3 dev/new_adr.py --at
-   2026-11-17T12:00:06Z "Title of record 6"`. Move its text into the new file and delete the
-   old one.
+   2026-11-17T12:00:06Z "Title of the sixth record"`. Move its text into the new file and
+   delete the old one.
 2. Rewrite every citation of the old numbers in the repository, inside the records too. This is
    the one change made to existing records, and it changes no content.
 3. Keep a table from the former numbers to the IDs in `docs/ADR.md`, for commit messages, pull
    requests and other projects that cite a record by number.
-4. Run `check_adr.py`, then search for leftovers such as "ADR 6", "record 6" or "ADR-006".
+4. Run `check_adr.py`, then search for leftovers such as "ADR 6" or "ADR-006".
